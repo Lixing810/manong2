@@ -6,26 +6,41 @@ import com.manong.pojo.User;
 import com.manong.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.regex.Pattern;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/user")
+    @RequestMapping(value = "/InsertUser" ,method = RequestMethod.POST)
     @ResponseBody
-    public List<User> getAll(){
-        return userService.selectAll();
+    public void registered(@RequestBody User user) {
+        userService.insertUser(user);
+    }
+    @RequestMapping(value = "/selectUser" ,method = RequestMethod.POST)
+    @ResponseBody
+    public User selectUser(@RequestParam("userName") String userName) {
+        User user = userService.selectUser(userName);
+
+        return user;
+
+
+    }
+    @RequestMapping(value = "/changeLoginStatus" ,method = RequestMethod.POST)
+    @ResponseBody
+    public String changeLoginStatus(@RequestParam("isLogin") Integer isLogin,@RequestParam("id") Integer id) {
+        int i = userService.changeLoginStatus(isLogin, id);
+        if (i>0){
+            return "success";
+        }else {
+            return "faild";
+        }
     }
 
-    @RequestMapping("/user/{id}")
-    @ResponseBody
-    public User getUserById(@PathVariable Integer id){
-        return userService.selectByPrimaryKey(id);
-    }
+
+
 }

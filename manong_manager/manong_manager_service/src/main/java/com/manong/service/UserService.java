@@ -1,15 +1,13 @@
 package com.manong.service;
 
 import com.manong.pojo.User;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserService {
 
-    List<User> selectAll();
+    int insertUser(User user);
 
-    User selectByPrimaryKey(Integer userId);
+    User selectUser(String userName);
 
-
-
+    int changeLoginStatus(@Param("isLogin") Integer isLogin , @Param("id")Integer id);
 }

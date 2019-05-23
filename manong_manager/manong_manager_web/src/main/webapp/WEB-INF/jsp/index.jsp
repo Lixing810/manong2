@@ -1,89 +1,100 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 后台大布局 - Layui</title>
-    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../layui/css/layui.css" type="text/css"  media="all">
 </head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">layui 后台布局</div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
-        </ul>
-    </div>
-
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
-    </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
-    </div>
+<body class="layui-layout-body" style="background-color: #F2F2F2;">
+<div class="layui-layout layui-layout-admin" style="">
+    <center>
+        <form class="layui-form">
+            <div style="margin-top: 5%;font-size: 25px;">码农商城</div>
+            <div class="layui-card layui-main" style="width: 500px; height: 300px; margin-top: 5%; padding:10px">
+                <div class="layui-card-header">用户登录</div>
+                <div class="layui-card-body">
+                    <br />
+                    <form class="layui-form">
+                        <div class="layui-form-item" style="width: 400px;">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-block">
+                                <input type="text" lay-verify="required" id="userName" name="userName" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item" style="width: 400px;">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-block">
+                                <input type="password" id="password" name="password" lay-verify="required"  placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <br/>
+                <div>
+                    <button type="button" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="btnLogin">登录</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+                <div  style="margin-left: 65%;margin-top: 5%;"><a href="${pageContext.request.contextPath}/registered" >没有账号？现在注册</a></div>
+            </div>
+        </form>
+    </center>
 </div>
-<script src="../layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
+
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script src="../zTree_v3/js/jquery-3.3.1.js" charset="utf-8"></script>
+<script src="../js/cookie/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','layer','form'],function(){
+        var $=layui.$,
+            layer = layui.layer,
+            form = layui.form;
+        form.on('submit(btnLogin)', function(data){
+            $.ajax({
+                type:"POST",
+                url:"/user/selectUser",
+                data:{"userName":data.field.userName},
+                success:function(res){
+                    if (res!=""){
+                        if (res.password==data.field.password) {
+                           if (res.isLogin==0){
+                               console.info(JSON.stringify(res))
+                               console.info(res)
+                               $.cookie("user", JSON.stringify(res), {"expires": 20 * 365});
+                              // $.ajax({
+                              //   type:"POST",
+                              //   url:"/user/changeLoginStatus",
+                              //   data:{"isLogin":1,"id":res.id},
+                              //   success:function(res){
+                              //       layer.msg(res)
+                              //       window.location = '/manager';
+                              //   },
+                              //   error:function(jqXHR){
+                              //       layer.msg("系统错误，请联系管理员")
+                              //   }
+                              //  });
+                           }else {
+                            layer.msg("该账户已在别处登录，请联系管理员")
+                            }
+                        }else {
+                            layer.msg("密码错误，请重新输入")
+                        }
+                    }else {
+                        layer.msg("没有该账号，请注册")
+                    }
+                },
+                error:function(jqXHR){
+                    layer.msg("系统错误，请联系管理员")
+                }
+            });
+            return false;
+        });
 
     });
 </script>
+
 </body>
 </html>

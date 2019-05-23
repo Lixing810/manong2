@@ -1,12 +1,10 @@
 package com.manong.mapper;
 
 import com.manong.pojo.User;
-import com.manong.pojo.UserExample;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 public interface UserMapper {
+
 
     int deleteByPrimaryKey(Integer id);
 
@@ -14,17 +12,16 @@ public interface UserMapper {
 
     int insertSelective(User record);
 
-    List<User> selectByExample(UserExample example);
-
-    User selectByPrimaryKey(Integer userId);
-
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+    User selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
 
-    List<User> selectAll();
+
+    public User selectUser(String userName);
+
+    public int changeLoginStatus(@Param("isLogin") Integer isLogin , @Param("id")Integer id);
+
+
 }
