@@ -13,7 +13,7 @@
     </modules>
 
     <properties>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <maven-resources-plugin.verison>3.1.0</maven-resources-plugin.verison>
         <mybatis.verison>3.5.1</mybatis.verison>
         <mybatis-spring>2.0.1</mybatis-spring>
