@@ -15,7 +15,7 @@
     <properties>
         <junit.version>4.12</junit.version>
         <maven-resources-plugin.verison>3.1.0</maven-resources-plugin.verison>
-        <mybatis.verison>3.5.1</mybatis.verison>
+        <mybatis.verison>3.5.6</mybatis.verison>
         <mybatis-spring>2.0.1</mybatis-spring>
         <spring.version>5.1.7.RELEASE</spring.version>
         <druid.version>1.1.16</druid.version>
