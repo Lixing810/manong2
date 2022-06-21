@@ -19,7 +19,7 @@
         <mybatis-spring>2.0.1</mybatis-spring>
         <spring.version>5.1.7.RELEASE</spring.version>
         <druid.version>1.1.16</druid.version>
-        <mysql.version>8.0.16</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <jackson.version>2.9.8</jackson.version>
     </properties>
 
