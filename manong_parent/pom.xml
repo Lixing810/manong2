@@ -17,7 +17,7 @@
         <maven-resources-plugin.verison>3.1.0</maven-resources-plugin.verison>
         <mybatis.verison>3.5.1</mybatis.verison>
         <mybatis-spring>2.0.1</mybatis-spring>
-        <spring.version>5.1.7.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <druid.version>1.1.16</druid.version>
         <mysql.version>8.0.16</mysql.version>
         <jackson.version>2.9.8</jackson.version>
